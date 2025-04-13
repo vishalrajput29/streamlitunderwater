@@ -7,7 +7,7 @@ import cv2
 #create model of yolov
 # Load the trained YOLO model (update the path to your model)
 model = YOLO('best (1).pt')
-
+#create
 # Streamlit UI
 st.title("Object Detection App")
 st.write("Upload an image to detect objects using YOLOv8")
