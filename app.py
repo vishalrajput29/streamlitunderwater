@@ -4,7 +4,7 @@ from PIL import Image
 import io
 import numpy as np
 import cv2
-
+#create model of yolov
 # Load the trained YOLO model (update the path to your model)
 model = YOLO('best (1).pt')
 
