@@ -2,28 +2,13 @@ import streamlit as st
 from ultralytics import YOLO
 from PIL import Image
 import io
-import os
-import gdown
+import numpy as np
+import cv2
 
-# === Google Drive download info ===
-GDRIVE_FILE_ID = "1nFgDiO15zwI8Z6fKujd4xRNMGh_XliK5"
-MODEL_FILENAME = "best.pt"
+# Load the trained YOLO model (update the path to your model)
+model = YOLO('best.pt')
 
-# === Step 1: Download model from Google Drive if not already present ===
-def download_model_from_gdrive():
-    if not os.path.exists(MODEL_FILENAME):
-        url = f"https://drive.google.com/uc?id={GDRIVE_FILE_ID}"
-        st.info("📥 Downloading model from Google Drive...")
-        gdown.download(url, MODEL_FILENAME, quiet=False)
-        st.success("✅ Model downloaded successfully.")
-
-# Run the download function before loading the model
-download_model_from_gdrive()
-
-# === Load the trained YOLO model ===
-model = YOLO(MODEL_FILENAME)
-
-# === Streamlit UI ===
+# Streamlit UI
 st.title("Object Detection App")
 st.write("Upload an image to detect objects using YOLOv8")
 
